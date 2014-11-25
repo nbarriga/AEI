@@ -2,8 +2,5 @@
 *.pyc
 *.swp
 
-analyze.cfg
-gameroom.cfg
-roundrobin.cfg
 
 /AEI.egg-info
