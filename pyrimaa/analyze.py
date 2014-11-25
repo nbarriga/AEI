@@ -22,7 +22,7 @@ def main(args=sys.argv):
     plines = pfile.readlines()
     plines = [l.strip() for l in plines]
     plines = [l for l in plines if l]
-    while plines and not plines[0][0].isdigit():
+    while plines and not plines[0][0].isalnum():
         del plines[0]
     if not plines:
         print "File %s does not appear to be a board or move list." % (args[1],)

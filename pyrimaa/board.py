@@ -991,12 +991,15 @@ def parse_long_pos(text):
         if line:
             break
     text = text[emptynum:]
-    while text[0] and not text[0][0].isdigit():
+    while text[0] and not text[0][0].isalnum():
         del text[0]
     movecolorix = 0
     while text[0][:movecolorix+1].isdigit():
         movecolorix += 1
-    movenumber = int(text[0][:movecolorix])
+    if movecolorix == 0:
+        movenumber  = 3
+    else:
+        movenumber = int(text[0][:movecolorix])
     if text[0][movecolorix].lower() in "bs":
         color = Color.SILVER
     elif text[0][movecolorix].lower() in "wg":
@@ -1036,7 +1039,7 @@ def parse_long_pos(text):
     if len(text) > 12:
         for line in text[12:]:
             line = line.strip()
-            if not line or line[0] == '#':
+            if not line or line[0] == '#' or line[0] == ':':
                 break
             print "l", line
             line = " ".join(line.split()[1:])
